@@ -1,84 +1,102 @@
 #include <iostream>
 #include <string>
+#define SIZE 6
 using namespace std;
-
-int map[6][6] = {
-    {0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0}
-};
 
 class Object
 {
     public:
-    string name;
-    int hp;
-    int mp;
-    int atk;
-    int def;
     int x;
     int y;
     int z;
-    Object(string n, int h, int a)
+    Object()
     {
-        name = n;
-        hp = h;
-        atk = a;
         x = 0;
         y = 0;
         z = 0;
     }
-    void status()
+    void move(int dx, int dy)
     {
-        cout << name << "'s STATUS" << endl;
-        cout << "NAME : " << name << endl;
-        cout << "HP   : " << hp << endl;
-        cout << "ATK  : " << atk << endl;
+        x += dx;
+        y += dy;
     }
-    int attack()
+};
+
+class System
+{
+    public:
+    bool gamefin;
+    Object p;
+    System()
     {
-        return this->atk;
+        gamefin = false;
+        game();
     }
-    void damage(int hit)
+    void game(void)
     {
-        this->hp -= hit;
-    }
-    bool death()
-    {
-        if(this->hp > 0)
-            return false;
-        else
-            return true;
-    }
-    void encount(Object* enemy)
-    {
-        while(!this->death())
+        while(!gamefin)
         {
-            int hit = this->attack();
-            enemy->damage(hit);
-            if(enemy->death())
+            string cmd;
+            printmap();
+            printcmd();
+            cout << "command : ";
+            cin >> cmd;
+            readcmd(cmd);
+        }
+    }
+    void printmap()
+    {
+        for(int i = 0; i < SIZE; i++)
+        {
+            for(int j = 0; j < SIZE; j++)
             {
-                break;
+                if(i == p.y && j == p.x)
+                {
+                    cout << "p";
+                }
+                else
+                {
+                    cout << "#";
+                }
             }
-            enemy->status();
-            
-            hit = enemy->attack();
-            this->damage(hit);
-            if(this->death())
-            {
-                cout << "GAME OVER" << endl;
-            }
-            this->status();
+            cout << endl;
+        }
+    }
+    void printcmd(void)
+    {
+        cout << "↑:w / ←:a / ↓:s / →:d / MENU:e / QUIT:q" << endl;
+    }
+    void readcmd(string cmd)
+    {
+        if(!cmd.compare("w"))
+        {
+            p.move(0, -1);
+        }
+        else if(!cmd.compare("a"))
+        {
+            p.move(-1, 0);
+        }
+        else if(!cmd.compare("s"))
+        {
+            p.move(0, 1);
+        }
+        else if(!cmd.compare("d"))
+        {
+            p.move(1, 0);
+        }
+        else if(!cmd.compare("q"))
+        {
+            this->gamefin = true;
+        }
+        else
+        {
+            cout << "error" << endl;
         }
     }
 };
 
 int main(void)
 {
-    Object p("bob", 400, 50);
-    p.status();
+    System launch;
     return 0;
 }
