@@ -1,9 +1,13 @@
 #pragma once
+#include <cstring>
+
 class STATUS
 {
 public:
     // コンストラクタ：キャラクターのステータスを初期化
-    STATUS(int initialHP, int initialMP, int initialATK, int initialDEF) {
+    STATUS(const char* initialNAME, int initialHP, int initialMP, int initialATK, int initialDEF) {
+        strncpy_s(NAME, sizeof(NAME), initialNAME, _TRUNCATE);
+        NAME[sizeof(NAME) - 1] = '\0'; // 念のためヌル終端文字を設定
         HP = initialHP;
         MP = initialMP;
         ATK = initialATK;
@@ -11,6 +15,10 @@ public:
     }
 
     // ゲッターメソッド：ステータスを取得
+    const char* getNAME() {
+        return NAME;
+    }
+
     int getHP() const {
         return HP;
     }
@@ -44,23 +52,27 @@ public:
         DEF = newDEF;
     }
 
-    // ダメージを受けるメソッド
-    void takeDamage(int damage) {
-        // 防御力を考慮して実際のダメージを計算
-        int actualDamage = damage - DEF;
-        if (actualDamage > 0) {
-            HP -= actualDamage;
-        }
+
+    // キャラクターの情報を表示(テスト用)
+    void displayInfo() {
+        DrawFormatStringToHandle(0, 0, Color.GREEN, Font.Meiryo[16], "我が名は %s !", getNAME());
+        DrawFormatStringToHandle(0, 20, Color.GREEN, Font.Meiryo[16], "HP:%d  MP:%d", getHP(), getMP());
     }
 
-    // キャラクターの情報を表示
-    void displayInfo(const char String[256]) {
-        DrawFormatStringToHandle(0, 0, Color.GREEN, Font.Meiryo[16], "我が名は %s !", String);
-        DrawFormatStringToHandle(0, 20, Color.GREEN, Font.Meiryo[16], "HP:%d  MP:%d", getHP(), getMP());
+    // ステータス情報を表示する
+    // X,Yは座標
+    void displayStatus(int X, int Y)
+    {
+        DrawFormatStringToHandle(X, Y, Color.RED, Font.Meiryo[16], "%s\nHP:%d\nMP:%d", getNAME(), getHP(), getMP());
+    }
 
+    // 
+    void encountEnemy() {
+        ;
     }
 
 private:
+    char NAME[64];   // キャラや敵の名前
     int HP;   // 体力
     int MP;   // 魔法ポイント
     int ATK;  // 攻撃力

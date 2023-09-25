@@ -18,12 +18,16 @@ int Scene = COURCE::START;
 #include "Title.h"
 #include "Stage.h"
 #include "Player.h"
+#include <string>
 
 // ’Ç‰Á
 #include "Status.h"
+#include "Enemy.h"
+#include "Battle.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
+
 	ChangeWindowMode(TRUE);
 	DxLib_Init();
     
@@ -36,7 +40,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     Color.Load();
     Font.Load();
     Stage.Read();
-    STATUS user(100, 50, 10, 10);
+
+    STATUS user(Title.InputName(), 100, 50, 10, 10);
+    STATUS enemy("ƒXƒ‰ƒCƒ€", 20, 5, 5, 5);
 
     while (ScreenFlip() == 0 && ClearDrawScreen && ProcessMessage() == 0 && GetKey() == 0 && Key[KEY_INPUT_ESCAPE] == 0)
     {
@@ -47,14 +53,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             break;
         case COURCE::WORLD:
             PlayerDraw.RealScreenDraw();
-            user.displayInfo("‚ß‚®‚Ý‚ñ");
+            user.displayInfo();
             break;
         case COURCE::FIGHT:
-            ClearDrawScreen();
-            SetDrawScreen(DX_SCREEN_BACK);
-            SetBackgroundColor(256, 256, 256);
-            user.displayInfo("vs You");
-            ScreenFlip();
+            Enemy.ShowEnemy(Picture.Slime, Picture.BackGraound_Forest);
+            user.displayStatus(WIN_X / 2 + WIN_X / 8, WIN_Y * 3 / 4 + 20);
+            enemy.displayStatus(WIN_X / 2 - 30, WIN_Y / 4 - 60);
+            Battle.ShowSelect(WIN_X / 4, WIN_Y * 3 / 4);
             break;
         };
     }

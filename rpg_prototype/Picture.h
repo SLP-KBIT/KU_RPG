@@ -9,6 +9,7 @@ public:
 	int Player[12];
 	int Slime[2];
 	int SlimeBeth[2];
+	int BackGraound_Forest[1];
 
 	void Load()
 	{
@@ -21,6 +22,7 @@ public:
 		LoadDivGraph("./Picture/Players/akane2.png", 12, 3, 4, CELL, CELL, Player);
 		LoadDivGraph("./Picture/Enemys/Slime.png", 2, 2, 1, CELL, CELL, Slime);
 		LoadDivGraph("./Picture/Enemys/SlimeBeth.png", 2, 2, 1, CELL, CELL, SlimeBeth);
+		BackGraound_Forest[0] = LoadGraph("./Picture/Backgrounds/pure_forest.png");
 	};
 private:
 };
