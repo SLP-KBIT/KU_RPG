@@ -9,9 +9,12 @@ public:
 	int Player[12];
 	int Slime[2];
 	int SlimeBeth[2];
+	int BackGraound_Forest[1];
 
 	void Load()
 	{
+		// 用意した画像を読み込んでプログラム上で扱えるようにしている
+		// CELLはサイズ
 		LoadDivGraph("./Picture/Maps/MapChip.png", 16, 4, 4, CELL, CELL, Map); //マップ読み込み
 		LoadDivGraph("./Picture/Maps/grass_near_river.png", 4, 2, 2, CELL, CELL, Grace_River);
 		LoadDivGraph("./Picture/Maps/grass_near_river2.png", 4, 2, 2, CELL, CELL, Grace_River2);
@@ -19,6 +22,7 @@ public:
 		LoadDivGraph("./Picture/Players/akane2.png", 12, 3, 4, CELL, CELL, Player);
 		LoadDivGraph("./Picture/Enemys/Slime.png", 2, 2, 1, CELL, CELL, Slime);
 		LoadDivGraph("./Picture/Enemys/SlimeBeth.png", 2, 2, 1, CELL, CELL, SlimeBeth);
+		BackGraound_Forest[0] = LoadGraph("./Picture/Backgrounds/pure_forest.png");
 	};
 private:
 };
