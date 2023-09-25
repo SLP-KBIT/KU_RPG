@@ -49,6 +49,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             PlayerDraw.RealScreenDraw();
             user.displayInfo("‚ß‚®‚Ý‚ñ");
             break;
+        case COURCE::FIGHT:
+            ClearDrawScreen();
+            SetDrawScreen(DX_SCREEN_BACK);
+            SetBackgroundColor(256, 256, 256);
+            user.displayInfo("vs You");
+            ScreenFlip();
+            break;
         };
     }
 
