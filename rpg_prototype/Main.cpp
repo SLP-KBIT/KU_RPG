@@ -19,6 +19,9 @@ int Scene = COURCE::START;
 #include "Stage.h"
 #include "Player.h"
 
+// ’Ç‰Á
+#include "Status.h"
+
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	ChangeWindowMode(TRUE);
@@ -33,6 +36,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     Color.Load();
     Font.Load();
     Stage.Read();
+    STATUS user(100, 50, 10, 10);
 
     while (ScreenFlip() == 0 && ClearDrawScreen && ProcessMessage() == 0 && GetKey() == 0 && Key[KEY_INPUT_ESCAPE] == 0)
     {
@@ -43,6 +47,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             break;
         case COURCE::WORLD:
             PlayerDraw.RealScreenDraw();
+            user.displayInfo("‚ß‚®‚Ý‚ñ");
             break;
         };
     }

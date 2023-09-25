@@ -12,6 +12,8 @@ public:
 
 	void Load()
 	{
+		// 用意した画像を読み込んでプログラム上で扱えるようにしている
+		// CELLはサイズ
 		LoadDivGraph("./Picture/Maps/MapChip.png", 16, 4, 4, CELL, CELL, Map); //マップ読み込み
 		LoadDivGraph("./Picture/Maps/grass_near_river.png", 4, 2, 2, CELL, CELL, Grace_River);
 		LoadDivGraph("./Picture/Maps/grass_near_river2.png", 4, 2, 2, CELL, CELL, Grace_River2);

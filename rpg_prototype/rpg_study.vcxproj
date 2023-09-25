@@ -154,9 +154,11 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Battle.h" />
     <ClInclude Include="Picture.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Stage.h" />
+    <ClInclude Include="Status.h" />
     <ClInclude Include="Sub.h" />
     <ClInclude Include="Title.h" />
   </ItemGroup>
