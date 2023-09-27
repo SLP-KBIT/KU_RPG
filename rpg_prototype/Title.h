@@ -6,7 +6,6 @@ public:
 	void Draw()
 	{
 		ClearDrawScreen();
-		SetDrawScreen(DX_SCREEN_BACK); //裏画面描画
 		//影付き
 		DrawFormatStringToHandle(22, 34, Color.WHITE, Font.MS[50], "Dx\nRPG");
 		DrawFormatStringToHandle(18, 30, Color.BLUE, Font.MS[50], "Dx\nRPG");
@@ -16,7 +15,6 @@ public:
 
 		ScreenFlip();
 		Key[KEY_INPUT_RETURN] = 0;
-
 		if (Key[KEY_INPUT_RETURN] == 1)
 		{
 			Scene = COURCE::WORLD;
@@ -32,7 +30,6 @@ public:
 	{
 		// 名前入力指示文字列の描画
 		DrawString(0, 0, "名前を入力してください", GetColor(255, 255, 255));
-
 		// 名前の入力
 		KeyInputString(0, 16, 30, Name, FALSE);
 
@@ -43,8 +40,8 @@ public:
 		DrawString(0, 0, "あなたの名前は", GetColor(255, 255, 255));
 		DrawString(0, 16, Name, GetColor(255, 255, 255));
 
-		// キー入力待ち    
-		//WaitKey();
+		WaitKey();
+				
 		return Name;
 	}
 
