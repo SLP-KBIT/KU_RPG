@@ -5,7 +5,9 @@
 ## ディレクトリ構成の概説
 開発において編集していくのは以下のファイル
 ```md
-<span style="color: blue; ">青は画像フォルダ</span>
+
+<span style="color: blue;">青は画像フォルダ</span>
+
 .
 └── rpg_prototype
     ├── Main.cpp           // 実行を制御するメインファイル
