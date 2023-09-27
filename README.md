@@ -5,7 +5,7 @@
 ## ディレクトリ構成の概説
 開発において編集していくのは以下のファイル
 ```md
-
+<span style="color: blue; ">青は画像フォルダ</span>
 .
 └── rpg_prototype
     ├── Main.cpp           // 実行を制御するメインファイル
@@ -26,7 +26,7 @@
     │       ├── Player.png
     │       ├── akane.png
     │       └── akane2.png
-<span style="color: DeepPink; ">
+<span style="color: deeppink; ">
     ├── Battle.h   // 戦闘におけるコマンド表示やダメージに関する記述を行うファイル
     ├── Enemy.h    // 敵の表示に関する記述を行うファイル
     ├── Picture.h  // 用意した画像をプログラム上に読み込む記述を行うファイル
