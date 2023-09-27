@@ -15,7 +15,6 @@ public:
 		DrawFormatStringToHandle(18, 150, Color.WHITE, Font.Meiryo[16], "Press Enter to MAP or 1 to FIGHT");
 
 		ScreenFlip();
-		Key[KEY_INPUT_RETURN] = 0;
 
 		if (Key[KEY_INPUT_RETURN] == 1)
 		{
@@ -45,6 +44,7 @@ public:
 
 		// ÉLÅ[ì¸óÕë“Çø    
 		//WaitKey();
+		Key[KEY_INPUT_RETURN] = 1;
 		return Name;
 	}
 

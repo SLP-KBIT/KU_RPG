@@ -56,10 +56,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             user.displayInfo();
             break;
         case COURCE::FIGHT:
-            Enemy.ShowEnemy(Picture.Slime, Picture.BackGraound_Forest);
-            user.displayStatus(WIN_X / 2 + WIN_X / 8, WIN_Y * 3 / 4 + 20);
-            enemy.displayStatus(WIN_X / 2 - 30, WIN_Y / 4 - 60);
-            Battle.ShowSelect(WIN_X / 4, WIN_Y * 3 / 4);
+            Battle.FightDraw(Picture.Slime, Picture.BackGraound_Forest, user, enemy);
             break;
         };
     }
