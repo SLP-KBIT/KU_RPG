@@ -26,7 +26,7 @@
     │       ├── Player.png
     │       ├── akane.png
     │       └── akane2.png
-<font color="DeepPink">
+<span style="color: DeepPink; ">
     ├── Battle.h   // 戦闘におけるコマンド表示やダメージに関する記述を行うファイル
     ├── Enemy.h    // 敵の表示に関する記述を行うファイル
     ├── Picture.h  // 用意した画像をプログラム上に読み込む記述を行うファイル
@@ -35,7 +35,7 @@
     ├── Status.h   // HPやMPなどキャラクターのステータスに関する記述を行うファイル
     ├── Sub.h      // フォントやキー入力などメタ的な要素に関する記述を行うファイル
     ├── Title.h    // タイトル画面の制御に関する記述を行うファイル
-</font>
+</span>
     :
     etc
 ```
