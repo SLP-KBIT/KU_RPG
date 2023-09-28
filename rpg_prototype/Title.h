@@ -46,6 +46,7 @@ public:
 	}
 
 private:
+	//
 	char Name[32];
 };
 
