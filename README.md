@@ -21,10 +21,15 @@
     │   │   ├── MapChip.png
     │   │   ├── grass_near_river.png
     │   │   └── grass_near_river2.png
-    │   └── Players        // プレイヤーに関する画像を保存するフォルダ
-    │       ├── Player.png
-    │       ├── akane.png
-    │       └── akane2.png
+    │   ├── Players        // プレイヤーに関する画像を保存するフォルダ
+    │   │   ├── Player.png
+    │   │   ├── akane.png
+    │   │   └── akane2.png
+    │   └── Sounds
+    │       ├── Music         // 音楽用フォルダ
+    │       │   ├── .mp3
+    │       └── SoundEffects  //  効果音用フォルダ
+    │           ├── .mp3
     ├── Battle.h   // 戦闘におけるコマンド表示やダメージ
     ├── Enemy.h    // 敵の表示
     ├── Picture.h  // 用意した画像をプログラム上に読み込む
