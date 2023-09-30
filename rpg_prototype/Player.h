@@ -6,7 +6,7 @@ public:
 
 	int loopNum = 0;
 	int PicMode = 10;
-	int dir = 4;
+	int dir = 1;
 	// 上=4、左=2、右=3、下=1
 
 	struct {
@@ -146,10 +146,10 @@ void PLAYERDRAW::BackScreenDraw()
 
 void PLAYERDRAW::WarpPointSet(int xi, int yi, int xo, int yo)
 {
-	WarpZone.xi = xi;
-	WarpZone.yi = yi;
-	WarpZone.xo = xo;
-	WarpZone.yo = yo;
+	WarpZone.xi = xi - 8;
+	WarpZone.yi = yi - 9;
+	WarpZone.xo = xo - 8;
+	WarpZone.yo = yo - 9;
 }
 
 void PLAYERDRAW::Warp()
