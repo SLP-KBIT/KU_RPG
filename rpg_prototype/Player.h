@@ -5,9 +5,9 @@ public:
 	void RealScreenDraw();
 
 	int loopNum = 0;
-	int PicMode = 10;
-	int dir = 1;
-	// 上=4、左=2、右=3、下=1
+	int PicMode = 1;
+	int dir = 4;
+	// 下=4、左=2、右=3、上=1
 
 	struct {
 		int PicMaxU = 2;
@@ -24,7 +24,6 @@ public:
 	struct {
 		int xi, yi;
 		int xo, yo;
-		bool warp_finish = false;
 	}WarpZone;
 
 	int Player_X = 0;
@@ -125,8 +124,9 @@ void PLAYERDRAW::CheckCIE()
 		Player_Y = Prev_Player_Y;
 	}
 
-	if (Chip == 7 && !WarpZone.warp_finish)
+	if (Chip == 7)
 	{
+		WaitKey();
 		Warp();
 	}
 }
@@ -155,10 +155,10 @@ void PLAYERDRAW::WarpPointSet(int xi, int yi, int xo, int yo)
 void PLAYERDRAW::Warp()
 {
 	Player_X = WarpZone.xo;
-	Player_Y = WarpZone.yo;
+	Player_Y = WarpZone.yo + 1;
 	WarpZone.xo = WarpZone.xi;
 	WarpZone.yo = WarpZone.yi;
 	WarpZone.xi = Player_X;
-	WarpZone.yi = Player_Y;
-	WarpZone.warp_finish = true;
+	WarpZone.yi = Player_Y - 1;
+	dir = 4;
 }
