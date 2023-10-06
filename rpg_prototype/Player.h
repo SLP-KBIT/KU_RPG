@@ -5,9 +5,9 @@ public:
 	void RealScreenDraw();
 
 	int loopNum = 0;
-	int PicMode = 10;
+	int PicMode = 1;
 	int dir = 4;
-	// 上=4、左=2、右=3、下=1
+	// 下=4、左=2、右=3、上=1
 
 	struct {
 		int PicMaxU = 2;
@@ -21,20 +21,32 @@ public:
 		int PicMinD = 9;
 	}AniFla;
 
+	struct {
+		int xi, yi;
+		int xo, yo;
+	}WarpZone;
+
 	int Player_X = 0;
 	int Player_Y = 0;
 	int Prev_Player_X = 0;
 	int Prev_Player_Y = 0;
 
+	PLAYERDRAW();
+	void WarpPointSet(int xi, int yi, int xo, int yo);
 	void BackScreenDraw();
 	void Move();
 	void MoveAnime();
 	void CheckCIE();
-
+	void Warp();
 private:
 };
 
 PLAYERDRAW PlayerDraw;
+
+PLAYERDRAW::PLAYERDRAW()
+{
+	WarpPointSet(26, 12, 5, 35);
+}
 
 void PLAYERDRAW::RealScreenDraw()
 {
@@ -71,7 +83,7 @@ void PLAYERDRAW::Move()
 		Player_Y--;
 		loopNum += 50;
 	}
-};
+}
 
 void PLAYERDRAW::MoveAnime()
 {
@@ -111,6 +123,12 @@ void PLAYERDRAW::CheckCIE()
 		Player_X = Prev_Player_X;
 		Player_Y = Prev_Player_Y;
 	}
+
+	if (Chip == 7)
+	{
+		WaitKey();
+		Warp();
+	}
 }
 
 void PLAYERDRAW::BackScreenDraw()
@@ -124,4 +142,23 @@ void PLAYERDRAW::BackScreenDraw()
 
 	Prev_Player_X = Player_X;
 	Prev_Player_Y = Player_Y;
-};
+}
+
+void PLAYERDRAW::WarpPointSet(int xi, int yi, int xo, int yo)
+{
+	WarpZone.xi = xi - 8;
+	WarpZone.yi = yi - 9;
+	WarpZone.xo = xo - 8;
+	WarpZone.yo = yo - 9;
+}
+
+void PLAYERDRAW::Warp()
+{
+	Player_X = WarpZone.xo;
+	Player_Y = WarpZone.yo + 1;
+	WarpZone.xo = WarpZone.xi;
+	WarpZone.yo = WarpZone.yi;
+	WarpZone.xi = Player_X;
+	WarpZone.yi = Player_Y - 1;
+	dir = 4;
+}

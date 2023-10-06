@@ -14,8 +14,7 @@ public:
 		DrawFormatStringToHandle(18, 150, Color.WHITE, Font.Meiryo[16], "Press Enter to MAP or 1 to FIGHT");
 
 		ScreenFlip();
-		Key[KEY_INPUT_RETURN] = 0;
-		if (Key[KEY_INPUT_RETURN] == 1)
+		if (Key[KEY_INPUT_2] == 1)
 		{
 			Scene = COURCE::WORLD;
 		}
@@ -46,6 +45,7 @@ public:
 	}
 
 private:
+	//
 	char Name[32];
 };
 

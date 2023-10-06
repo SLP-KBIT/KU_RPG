@@ -25,11 +25,16 @@ public:
 	{
 		int pic = 0;
 
-		for (int y = 0; y < STAGE_MAX_Y; y++)
+		for (int i = Player_Y; i < Player_Y + WIN_Y / CELL; i++)
 		{
-			for (int x = 0; x < STAGE_MAX_X; x++)
+			for (int j = Player_X; j < Player_X + WIN_X / CELL; j++)
 			{
-				switch (Chip.Type[x + Player_X][y + Player_Y])
+				if (j < 0 || i < 0 || STAGE_MAX_X <= j || STAGE_MAX_Y <= i)
+				{
+					DrawGraph(CELL * (j - Player_X), CELL * (i - Player_Y), Picture.Map[0], false);
+					continue;
+				}
+				switch (Chip.Type[j][i])
 				{
 				case 0:
 					pic = Picture.Map[0];
@@ -116,7 +121,7 @@ public:
 					pic = Picture.Fill_Grace[3];
 					break;
 				}
-				DrawGraph(CELL * x, CELL * y, pic, false);
+				DrawGraph(CELL * (j - Player_X), CELL * (i - Player_Y), pic, false);
 			}
 		};
 	};

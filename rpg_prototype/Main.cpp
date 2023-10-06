@@ -11,6 +11,7 @@ int Scene = COURCE::START;
 #define STAGE_MAX_X 38
 #define STAGE_MAX_Y 48
 #define CELL 16
+#define WARP_NUM 3
 
 #include "DxLib.h"
 #include "Picture.h"
@@ -19,6 +20,7 @@ int Scene = COURCE::START;
 #include "Stage.h"
 #include "Player.h"
 #include <string>
+#include <cstring>
 
 // ’Ç‰Á
 #include "Status.h"
