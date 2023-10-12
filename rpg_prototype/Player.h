@@ -1,4 +1,7 @@
 #pragma once
+
+#define LoopCountReset 50
+
 class PLAYERDRAW
 {
 public:
@@ -6,19 +9,26 @@ public:
 
 	int loopNum = 0;
 	int PicMode = 1;
-	int dir = 4;
-	// 下=4、左=2、右=3、上=1
+
+	// 時計回りの方向でカウントアップ
+	enum DIR {
+		UP,
+		RIGHT,
+		DOWN,
+		LEFT,
+	};
+	int dir = DIR::DOWN;
 
 	struct {
-		int PicMaxU = 2;
-		int PicMaxL = 5;
-		int PicMaxR = 8;
-		int PicMaxD = 11;
+		int PicMaxD = 2;
+		int PicMaxR = 5;
+		int PicMaxL = 8;
+		int PicMaxU = 11;
 
-		int PicMinU = 0;
-		int PicMinL = 3;
-		int PicMinR = 6;
-		int PicMinD = 9;
+		int PicMinD = 0;
+		int PicMinR = 3;
+		int PicMinL = 6;
+		int PicMinU = 9;
 	}AniFla;
 
 	struct {
@@ -26,10 +36,10 @@ public:
 		int xo, yo;
 	}WarpZone;
 
-	int Player_X = 0;
-	int Player_Y = 0;
-	int Prev_Player_X = 0;
-	int Prev_Player_Y = 0;
+	int Origin_X = 0;
+	int Origin_Y = 0;
+	int Prev_Origin_X = 0;
+	int Prev_Origin_Y = 0;
 
 	PLAYERDRAW();
 	void WarpPointSet(int xi, int yi, int xo, int yo);
@@ -56,32 +66,32 @@ void PLAYERDRAW::RealScreenDraw()
 
 void PLAYERDRAW::Move()
 {
-	if (Key[KEY_INPUT_DOWN] == 1 || Key[KEY_INPUT_S] == 1)
+	if (Key[KEY_INPUT_UP] == 1 || Key[KEY_INPUT_W] == 1)
 	{
-		dir = 4;
-		Player_Y++;
-		loopNum += 50;
+		dir = DIR::UP;
+		Origin_Y--;
+		loopNum += LoopCountReset;
 	}
 
 	if (Key[KEY_INPUT_LEFT] == 1 || Key[KEY_INPUT_A] == 1)
 	{
-		dir = 2;
-		Player_X--;
-		loopNum += 50;
+		dir = DIR::RIGHT;
+		Origin_X--;
+		loopNum += LoopCountReset;
+	}
+
+	if (Key[KEY_INPUT_DOWN] == 1 || Key[KEY_INPUT_S] == 1)
+	{
+		dir = DIR::DOWN;
+		Origin_Y++;
+		loopNum += LoopCountReset;
 	}
 
 	if (Key[KEY_INPUT_RIGHT] == 1 || Key[KEY_INPUT_D] == 1)
 	{
-		dir = 3;
-		Player_X++;
-		loopNum += 50;
-	}
-
-	if (Key[KEY_INPUT_UP] == 1 || Key[KEY_INPUT_W] == 1)
-	{
-		dir = 1;
-		Player_Y--;
-		loopNum += 50;
+		dir = DIR::LEFT;
+		Origin_X++;
+		loopNum += LoopCountReset;
 	}
 }
 
@@ -95,20 +105,20 @@ void PLAYERDRAW::MoveAnime()
 	loopNum = 0;
 	switch (dir)
 	{
-	case 1:
+	case DIR::UP:
 		if (PicMode == AniFla.PicMaxD || PicMode > AniFla.PicMaxD || PicMode < AniFla.PicMinD)PicMode = 9;
 		else PicMode++;
 		break;
-	case 2:
-		if (PicMode == AniFla.PicMaxL || PicMode > AniFla.PicMaxL || PicMode < AniFla.PicMinL)PicMode = 3;
+	case DIR::RIGHT:
+		if (PicMode == AniFla.PicMaxR || PicMode > AniFla.PicMaxR || PicMode < AniFla.PicMinR)PicMode = 3;
 		else PicMode++;
 		break;
-	case 3:
-		if (PicMode == AniFla.PicMaxR || PicMode > AniFla.PicMaxR || PicMode < AniFla.PicMinR)PicMode = 6;
+	case DIR::DOWN:
+		if (PicMode == AniFla.PicMaxD || PicMode > AniFla.PicMaxD || PicMode < AniFla.PicMinD)PicMode = 0;
 		else PicMode++;
 		break;
-	case 4:
-		if (PicMode == AniFla.PicMaxU || PicMode > AniFla.PicMaxU || PicMode < AniFla.PicMinU)PicMode = 0;
+	case DIR::LEFT:
+		if (PicMode == AniFla.PicMaxL || PicMode > AniFla.PicMaxL || PicMode < AniFla.PicMinL)PicMode = 6;
 		else PicMode++;
 		break;
 	}
@@ -116,12 +126,12 @@ void PLAYERDRAW::MoveAnime()
 
 void PLAYERDRAW::CheckCIE()
 {
-	int Chip = Stage.Chip.Type[8 + Player_X][9 + Player_Y];
+	int Chip = Stage.Chip.Type[Origin_X + FIXED_X][Origin_Y + FIXED_Y];
 
 	if (Chip == 0 || Chip == 1 || Chip == 2 || Chip == 15)
 	{
-		Player_X = Prev_Player_X;
-		Player_Y = Prev_Player_Y;
+		Origin_X = Prev_Origin_X;
+		Origin_Y = Prev_Origin_Y;
 	}
 
 	if (Chip == 7)
@@ -136,11 +146,11 @@ void PLAYERDRAW::BackScreenDraw()
 
 	MoveAnime();
 
-	Stage.Draw(Player_X, Player_Y);
-	DrawGraph(8 * CELL, 9 * CELL, Picture.Player[PicMode], TRUE);
+	Stage.Draw(Origin_X, Origin_Y);
+	DrawGraph(FIXED_X * CELL, FIXED_Y * CELL, Picture.Player[PicMode], TRUE);
 
-	Prev_Player_X = Player_X;
-	Prev_Player_Y = Player_Y;
+	Prev_Origin_X = Origin_X;
+	Prev_Origin_Y = Origin_Y;
 }
 
 void PLAYERDRAW::WarpPointSet(int xi, int yi, int xo, int yo)
@@ -153,11 +163,11 @@ void PLAYERDRAW::WarpPointSet(int xi, int yi, int xo, int yo)
 
 void PLAYERDRAW::Warp()
 {
-	Player_X = WarpZone.xo;
-	Player_Y = WarpZone.yo + 1;
+	Origin_X = WarpZone.xo;
+	Origin_Y = WarpZone.yo + 1;
 	WarpZone.xo = WarpZone.xi;
 	WarpZone.yo = WarpZone.yi;
-	WarpZone.xi = Player_X;
-	WarpZone.yi = Player_Y - 1;
-	dir = 4;
+	WarpZone.xi = Origin_X;
+	WarpZone.yi = Origin_Y - 1;
+	dir = DIR::DOWN;
 }

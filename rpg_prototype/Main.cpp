@@ -10,6 +10,8 @@ int Scene = COURCE::START;
 #define WIN_Y 480
 #define STAGE_MAX_X 38
 #define STAGE_MAX_Y 48
+#define FIXED_X 8
+#define FIXED_Y 9
 #define CELL 16
 #define WARP_NUM 3
 
