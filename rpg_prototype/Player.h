@@ -1,6 +1,6 @@
 #pragma once
 
-#define LoopCountReset 50
+#define LOOP_COUNT_RESET 50
 
 class PLAYERDRAW
 {
@@ -70,28 +70,28 @@ void PLAYERDRAW::Move()
 	{
 		dir = DIR::UP;
 		Origin_Y--;
-		loopNum += LoopCountReset;
+		loopNum += LOOP_COUNT_RESET;
 	}
 
 	if (Key[KEY_INPUT_LEFT] == 1 || Key[KEY_INPUT_A] == 1)
 	{
 		dir = DIR::RIGHT;
 		Origin_X--;
-		loopNum += LoopCountReset;
+		loopNum += LOOP_COUNT_RESET;
 	}
 
 	if (Key[KEY_INPUT_DOWN] == 1 || Key[KEY_INPUT_S] == 1)
 	{
 		dir = DIR::DOWN;
 		Origin_Y++;
-		loopNum += LoopCountReset;
+		loopNum += LOOP_COUNT_RESET;
 	}
 
 	if (Key[KEY_INPUT_RIGHT] == 1 || Key[KEY_INPUT_D] == 1)
 	{
 		dir = DIR::LEFT;
 		Origin_X++;
-		loopNum += LoopCountReset;
+		loopNum += LOOP_COUNT_RESET;
 	}
 }
 

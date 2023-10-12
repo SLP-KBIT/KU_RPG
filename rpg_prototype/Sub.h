@@ -55,3 +55,18 @@ int GetKey()
 	}
 	return 0;
 }
+
+bool pushFlag[256] = { 0 };
+bool isPush(int keyIndex)
+{
+	if (Key[keyIndex] && !pushFlag[keyIndex])
+	{
+		pushFlag[keyIndex] = true;
+		return true;
+	}
+	if (!Key[keyIndex])
+	{
+		pushFlag[keyIndex] = false;
+	}
+	return false;
+}
