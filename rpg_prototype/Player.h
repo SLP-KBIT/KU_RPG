@@ -155,10 +155,10 @@ void PLAYERDRAW::BackScreenDraw()
 
 void PLAYERDRAW::WarpPointSet(int xi, int yi, int xo, int yo)
 {
-	WarpZone.xi = xi - 8;
-	WarpZone.yi = yi - 9;
-	WarpZone.xo = xo - 8;
-	WarpZone.yo = yo - 9;
+	WarpZone.xi = xi - FIXED_X;
+	WarpZone.yi = yi - FIXED_Y;
+	WarpZone.xo = xo - FIXED_X;
+	WarpZone.yo = yo - FIXED_Y;
 }
 
 void PLAYERDRAW::Warp()
