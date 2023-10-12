@@ -126,7 +126,6 @@ void PLAYERDRAW::CheckCIE()
 
 	if (Chip == 7)
 	{
-		WaitKey();
 		Warp();
 	}
 }
