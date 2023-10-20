@@ -21,17 +21,17 @@ public:
 		}
 	};
 
-	void Draw(int Player_X, int Player_Y)
+	void Draw(int Origin_X, int Origin_Y)
 	{
 		int pic = 0;
 
-		for (int i = Player_Y; i < Player_Y + WIN_Y / CELL; i++)
+		for (int i = Origin_Y; i < Origin_Y + WIN_Y / CELL; i++)
 		{
-			for (int j = Player_X; j < Player_X + WIN_X / CELL; j++)
+			for (int j = Origin_X; j < Origin_X + WIN_X / CELL; j++)
 			{
 				if (j < 0 || i < 0 || STAGE_MAX_X <= j || STAGE_MAX_Y <= i)
 				{
-					DrawGraph(CELL * (j - Player_X), CELL * (i - Player_Y), Picture.Map[0], false);
+					DrawGraph(CELL * (j - Origin_X), CELL * (i - Origin_Y), Picture.Map[0], false);
 					continue;
 				}
 				switch (Chip.Type[j][i])
@@ -121,7 +121,7 @@ public:
 					pic = Picture.Fill_Grace[3];
 					break;
 				}
-				DrawGraph(CELL * (j - Player_X), CELL * (i - Player_Y), pic, false);
+				DrawGraph(CELL * (j - Origin_X), CELL * (i - Origin_Y), pic, false);
 			}
 		};
 	};

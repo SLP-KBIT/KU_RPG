@@ -1,5 +1,4 @@
 #pragma once
-
 #define LOOP_COUNT_RESET 50
 
 class PLAYERDRAW
@@ -35,6 +34,8 @@ public:
 		int xi, yi;
 		int xo, yo;
 	}WarpZone;
+
+	int m = 1;
 
 	int Origin_X = 0;
 	int Origin_Y = 0;
@@ -75,7 +76,7 @@ void PLAYERDRAW::Move()
 
 	if (Key[KEY_INPUT_LEFT] == 1 || Key[KEY_INPUT_A] == 1)
 	{
-		dir = DIR::RIGHT;
+		dir = DIR::LEFT;
 		Origin_X--;
 		loopNum += LOOP_COUNT_RESET;
 	}
@@ -89,9 +90,14 @@ void PLAYERDRAW::Move()
 
 	if (Key[KEY_INPUT_RIGHT] == 1 || Key[KEY_INPUT_D] == 1)
 	{
-		dir = DIR::LEFT;
+		dir = DIR::RIGHT;
 		Origin_X++;
 		loopNum += LOOP_COUNT_RESET;
+	}
+
+	if (Key[KEY_INPUT_E] == 1)
+	{
+		DrawBox(50, 50, 150, 200, GetColor(0, 0, 0), true);
 	}
 }
 
@@ -106,8 +112,28 @@ void PLAYERDRAW::MoveAnime()
 	switch (dir)
 	{
 	case DIR::UP:
-		if (PicMode == AniFla.PicMaxD || PicMode > AniFla.PicMaxD || PicMode < AniFla.PicMinD)PicMode = 9;
-		else PicMode++;
+		if (PicMode == 9)
+		{
+			PicMode++;
+			m *= -1;
+		}
+		else if (PicMode == 10)
+		{
+			PicMode += m;
+		}
+		else if (PicMode == 11)
+		{
+			PicMode--;
+			m *= -1;
+		}
+		else if (PicMode < AniFla.PicMinU)
+		{
+			PicMode = 10;
+		}
+		else if (AniFla.PicMaxU < PicMode)
+		{
+			PicMode = 10;
+		}
 		break;
 	case DIR::RIGHT:
 		if (PicMode == AniFla.PicMaxR || PicMode > AniFla.PicMaxR || PicMode < AniFla.PicMinR)PicMode = 3;
