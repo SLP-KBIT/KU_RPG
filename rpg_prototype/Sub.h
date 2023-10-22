@@ -70,3 +70,23 @@ bool isPush(int keyIndex)
 	}
 	return false;
 }
+
+// フェードアウト
+void fade_out()
+{
+	//フェード値の設定（0～255の値が有効）
+	int i = 0;
+
+	for (int alpha = 0; alpha <= 255; alpha += 255 * i / 100, i++) {
+
+		//フェードの設定
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha);
+
+		//黒で塗りつぶし
+		DrawBox(0, 0, WIN_X, WIN_Y, GetColor(0, 0, 0), TRUE);
+		ScreenFlip();
+		WaitTimer(100);
+	}
+	//デフォルトに戻す
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+}

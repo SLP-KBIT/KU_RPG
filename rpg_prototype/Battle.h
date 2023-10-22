@@ -108,7 +108,7 @@ STATUS BATTLE::FightDraw(int MonsterGH[], int BackGraound[], STATUS User, STATUS
 		Battle.ShowCommand(WIN_X / 2 + WIN_X / 8, WIN_Y * 3 / 4, command_num);
 	};
 	
-	while (ScreenFlip() == 0 && ClearDrawScreen() == 0 && ProcessMessage() == 0 && GetKey() == 0 && Key[KEY_INPUT_ESCAPE] == 0 && flag)
+	while (flag && ScreenFlip() == 0 && ClearDrawScreen() == 0 && ProcessMessage() == 0 && GetKey() == 0 && Key[KEY_INPUT_ESCAPE] == 0)
 	{
 		command_num = SelectCommand(command_num);
 		if (0 <= command_num && command_num < 4)
@@ -139,5 +139,6 @@ STATUS BATTLE::FightDraw(int MonsterGH[], int BackGraound[], STATUS User, STATUS
 			}
 		}
 	}
+	fade_out();
 	return User;
 }

@@ -12,7 +12,10 @@ public:
 	int BackGraound_Forest[1];
 
 	// 新マップ
+	int Toilet;
 	int Map[128];
+	int Elevator[88];
+	int Carpet[192];
 
 	void Load()
 	{
@@ -28,7 +31,10 @@ public:
 		BackGraound_Forest[0] = LoadGraph("./Picture/Backgrounds/pure_forest.png");
 
 		// 新マップ
+		Toilet = LoadGraph("./Picture/Maps/toilet.png");
 		LoadDivGraph("./Picture/Maps/SF_A5_32(VX_XP).png", 128, 8, 16, CELL, CELL, Map);
+		LoadDivGraph("./Picture/Maps/elevator.png", 88, 11, 8, CELL, CELL, Elevator);
+		LoadDivGraph("./Picture/Maps/carpet.png", 192, 16, 12, CELL, CELL, Carpet);
 	};
 private:
 };
