@@ -4,15 +4,18 @@ class STAGE
 public:
 	struct
 	{
-		int Type[11][STAGE_MAX_X][STAGE_MAX_Y];
+		int Type[12][STAGE_MAX_X][STAGE_MAX_Y];
 	}Chip;
 
-	int floor = 3;
+	int floor = 1;
 
 	void Read()
 	{
 		FILE* stage[12];
 		// fopen_s(&stage, "./CourceFile/WorldMap.txt", "r");
+		fopen_s(&stage[0], "./CourceFile/UnivMap0.txt", "r");
+		fopen_s(&stage[1], "./CourceFile/UnivMap1.txt", "r");
+		fopen_s(&stage[2], "./CourceFile/UnivMap2.txt", "r");
 		fopen_s(&stage[3], "./CourceFile/UnivMap3.txt", "r");
 		fopen_s(&stage[4], "./CourceFile/UnivMap4.txt", "r");
 		fopen_s(&stage[5], "./CourceFile/UnivMap5.txt", "r");
@@ -22,7 +25,7 @@ public:
 		fopen_s(&stage[9], "./CourceFile/UnivMap9.txt", "r");
 		fopen_s(&stage[10], "./CourceFile/UnivMap10.txt", "r");
 		fopen_s(&stage[11], "./CourceFile/UnivMap11.txt", "r");
-		for (int k = 3; k <= 7; k++)
+		for (int k = 0; k < 12; k++)
 		{
 			for (int y = 0; y < STAGE_MAX_Y; y++)
 			{
@@ -32,35 +35,6 @@ public:
 				}
 			}
 		}
-		
-		/*for (int y = 0; y < STAGE_MAX_Y; y++)
-		{
-			for (int x = 0; x < STAGE_MAX_X; x++)
-			{
-				fscanf_s(stage[8], "%d", &Chip.Type[8][x][y]);
-			}
-		}
-		for (int y = 0; y < STAGE_MAX_Y; y++)
-		{
-			for (int x = 0; x < STAGE_MAX_X; x++)
-			{
-				fscanf_s(stage[9], "%d", &Chip.Type[9][x][y]);
-			}
-		}
-		for (int y = 0; y < STAGE_MAX_Y; y++)
-		{
-			for (int x = 0; x < STAGE_MAX_X; x++)
-			{
-				fscanf_s(stage[10], "%d", &Chip.Type[10][x][y]);
-			}
-		}
-		for (int y = 0; y < STAGE_MAX_Y; y++)
-		{
-			for (int x = 0; x < STAGE_MAX_X; x++)
-			{
-				fscanf_s(stage[11], "%d", &Chip.Type[11][x][y]);
-			}
-		}*/
 	};
 
 	void Draw(int Origin_X, int Origin_Y)
@@ -78,8 +52,14 @@ public:
 				}
 				switch (Chip.Type[floor][j][i])
 				{
+				case -4:
+					pic = Picture.Map[42];
+					break;
+				case -3:
+					pic = Picture.Carpet[55];
+					break;
 				case -2:
-					pic = Picture.Map[0];
+					pic = Picture.Map[42];
 					break;
 				case -1:
 					pic = Picture.Elevator[0];

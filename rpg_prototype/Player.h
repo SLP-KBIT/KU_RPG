@@ -60,7 +60,7 @@ PLAYERDRAW PlayerDraw;
 
 PLAYERDRAW::PLAYERDRAW()
 {
-	for (int i = 3; i <= 11; i++)
+	for (int i = 1; i <= 11; i++)
 	{
 		WarpZone[i].xo = 15;
 		WarpZone[i].yo = 13;
@@ -227,13 +227,7 @@ void PLAYERDRAW::CheckCIE()
 {
 	int Chip = Stage.Chip.Type[Stage.floor][Origin_X + FIXED_X][Origin_Y + FIXED_Y];
 
-	if (Chip == 0 || Chip == 2 || Chip == 11 || Chip == 12 || Chip == 19)
-	{
-		Origin_X = Prev_Origin_X;
-		Origin_Y = Prev_Origin_Y;
-	}
-
-	if (Origin_X + FIXED_X == WarpZone[Stage.floor].xup && Origin_Y + FIXED_Y == WarpZone[Stage.floor].yup)
+	if (Origin_X + FIXED_X == WarpZone[Stage.floor].xup && Origin_Y + FIXED_Y == WarpZone[Stage.floor].yup && Chip != 42)
 	{
 		fade_out();
 		Stage.floor++;
@@ -244,7 +238,7 @@ void PLAYERDRAW::CheckCIE()
 		fade_in();
 	}
 
-	if (Origin_X + FIXED_X == WarpZone[Stage.floor].xdown && Origin_Y + FIXED_Y == WarpZone[Stage.floor].ydown)
+	if (Origin_X + FIXED_X == WarpZone[Stage.floor].xdown && Origin_Y + FIXED_Y == WarpZone[Stage.floor].ydown && Chip != 42)
 	{
 		fade_out();
 		Stage.floor--;
@@ -276,6 +270,7 @@ void PLAYERDRAW::CheckCIE()
 			showMsg(msg);
 		}
 	}
+
 	if (Chip == -2)
 	{
 		fade_out();
@@ -284,7 +279,7 @@ void PLAYERDRAW::CheckCIE()
 		fade_in();
 	}
 
-	if (Chip == 36 || Chip == 37)
+	if (Chip == 36 || Chip == 37 || Chip == -3 || Chip == -4)
 	{
 		fade_out();
 		Origin_X = 8 - FIXED_X;
@@ -296,6 +291,13 @@ void PLAYERDRAW::CheckCIE()
 void PLAYERDRAW::BackScreenDraw()
 {
 	MoveAnime();
+
+	int Chip = Stage.Chip.Type[Stage.floor][Origin_X + FIXED_X][Origin_Y + FIXED_Y];
+	if (Chip == 0 || Chip == 2 || Chip == 11 || Chip == 12 || Chip == 19)
+	{
+		Origin_X = Prev_Origin_X;
+		Origin_Y = Prev_Origin_Y;
+	}
 
 	Stage.Draw(Origin_X, Origin_Y);
 	DrawGraph(FIXED_X * CELL, FIXED_Y * CELL, Picture.Player[PicMode], TRUE);
