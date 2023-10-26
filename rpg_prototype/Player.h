@@ -52,7 +52,6 @@ public:
 	void MoveAnime();
 	void CheckCIE();
 	void fade_in();
-	void showMsg(std::string);
 private:
 };
 
@@ -106,11 +105,6 @@ void PLAYERDRAW::Move()
 		dir = DIR::RIGHT;
 		Origin_X++;
 		loopNum += LOOP_COUNT_RESET;
-	}
-
-	if (Key[KEY_INPUT_E] == 1)
-	{
-		DrawBox(50, 50, 150, 200, GetColor(0, 0, 0), true);
 	}
 }
 
@@ -262,6 +256,7 @@ void PLAYERDRAW::CheckCIE()
 			showMsg(msg);
 		}
 	}
+
 	if (Origin_Y + FIXED_Y == 12)
 	{
 		if (Origin_X + FIXED_X == 2 || Origin_X + FIXED_X == 3 || Origin_X + FIXED_X == 5)
@@ -327,10 +322,4 @@ void PLAYERDRAW::fade_in()
 		WaitTimer(30);
 	}
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-}
-
-void PLAYERDRAW::showMsg(std::string msg)
-{
-	DrawBox(0, 390, WIN_X, WIN_Y, Color.BLACK, true);
-	DrawFormatStringToHandle(15, 400, Color.WHITE, Font.Meiryo[16], msg.c_str());
 }

@@ -8,6 +8,8 @@ public:
 	}Chip;
 
 	int floor = 1;
+	ITEM* Toilet[12];
+	ITEM* Item[ITEM_NUM];
 
 	void Read()
 	{
@@ -34,6 +36,14 @@ public:
 					fscanf_s(stage[k], "%d", &Chip.Type[k][x][y]);
 				}
 			}
+		}
+
+		Item[0] = new ITEM(10, 13, 1, Picture.Item[0], 0, "ポーション", "パソコンがウイルスに感染した");
+		Item[1] = new ITEM(11, 14, 2, Picture.Item[1], 1, "USB", "パソコンがウイルスに感染した");
+
+		for (int i = 1; i < 12; i++)
+		{
+			Toilet[i] = new ITEM(13, 7, i, Picture.Toilet, -1, "Toilet", "ただのトイレのマークだった...");
 		}
 	};
 
@@ -165,6 +175,14 @@ public:
 					break;
 				}
 				DrawGraph(CELL * (j - Origin_X), CELL * (i - Origin_Y), pic, false);
+
+				Toilet[floor]->Draw(j, i, floor, Origin_X, Origin_Y);
+
+				for (int k = 0; k < ITEM_NUM; k++)
+				{
+					Item[k]->Draw(j, i, floor, Origin_X, Origin_Y);
+					Item[k]->pickedUp(Origin_X + FIXED_X, Origin_Y + FIXED_Y, floor);
+				}
 			}
 		}
 	};

@@ -13,6 +13,7 @@ public:
 
 	// 新マップ
 	int Toilet;
+	int Item[ITEM_NUM];
 	int Map[128];
 	int Elevator[88];
 	int Carpet[192];
@@ -31,7 +32,9 @@ public:
 		BackGraound_Forest[0] = LoadGraph("./Picture/Backgrounds/pure_forest.png");
 
 		// 新マップ
-		Toilet = LoadGraph("./Picture/Maps/toilet.png");
+		Toilet = LoadGraph("./Picture/Items/toilet.png");
+		Item[0] = LoadGraph("./Picture/Items/potion.png");
+		Item[1] = LoadGraph("./Picture/Items/usb.png");
 		LoadDivGraph("./Picture/Maps/SF_A5_32(VX_XP).png", 128, 8, 16, CELL, CELL, Map);
 		LoadDivGraph("./Picture/Maps/elevator.png", 88, 11, 8, CELL, CELL, Elevator);
 		LoadDivGraph("./Picture/Maps/carpet.png", 192, 16, 12, CELL, CELL, Carpet);

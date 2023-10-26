@@ -90,3 +90,9 @@ void fade_out()
 	//デフォルトに戻す
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
+
+void showMsg(std::string msg)
+{
+	DrawBox(0, 390, WIN_X, WIN_Y, Color.BLACK, true);
+	DrawFormatStringToHandle(15, 400, Color.WHITE, Font.Meiryo[16], msg.c_str());
+}

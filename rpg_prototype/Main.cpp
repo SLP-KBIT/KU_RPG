@@ -14,14 +14,24 @@ int Scene = COURCE::START;
 #define FIXED_Y 15
 #define CELL 16
 #define WARP_NUM 3
+#define ITEM_NUM 2
 
 #include <string>
 #include <cstring>
+#include <iostream>
+#include <map>
+using namespace std;
+map <int, string> item_dict;
+map <string, string> item_used_message;
+int inventory[ITEM_NUM] = {};
+
 
 #include "DxLib.h"
 #include "Picture.h"
 #include "Sub.h"
 #include "Title.h"
+#include "Object.h"
+#include "Item.h"
 #include "Stage.h"
 #include "Player.h"
 
@@ -32,6 +42,12 @@ int Scene = COURCE::START;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
+    item_dict[0] = "ポーション";
+    item_dict[1] = "USB";
+    inventory[0] = 0;
+    inventory[1] = 1;
+    item_used_message[item_dict[0]] = "体力が30回復した";
+    item_used_message[item_dict[1]] = "パソコンがウイルスに感染した";
 
 	ChangeWindowMode(TRUE);
 	DxLib_Init();
