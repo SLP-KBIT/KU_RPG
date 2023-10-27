@@ -1,17 +1,20 @@
 #pragma once
+#include <cstring>
+
 class STATUS
 {
 public:
     // コンストラクタ：キャラクターのステータスを初期化
-    STATUS(const char* initialNAME, int initialHP, int initialMP, int initialATK, int initialDEF) {
+    STATUS(const char* initialNAME, int initialHP, int initialMP, int initialATK, int initialDEF, int initialSPD, int initialLUK) {
         strncpy_s(NAME, sizeof(NAME), initialNAME, _TRUNCATE);
         NAME[sizeof(NAME) - 1] = '\0'; // 念のためヌル終端文字を設定
         HP = initialHP;
         MP = initialMP;
         ATK = initialATK;
         DEF = initialDEF;
+        SPD = initialSPD;
+        LUK = initialLUK;
     }
-
     // ゲッターメソッド：ステータスを取得
     const char* getNAME() {
         return NAME;
@@ -33,6 +36,13 @@ public:
         return DEF;
     }
 
+    int getSPD() const {
+        return SPD;
+    }
+    int getLUK() const {
+        return LUK;
+    }
+
     // セッターメソッド：ステータスを変更
     void setHP(int newHP) {
         HP = newHP;
@@ -49,7 +59,9 @@ public:
     void setDEF(int newDEF) {
         DEF = newDEF;
     }
-
+    void setLUK(int newLUK) {
+        DEF = newLUK;
+    }
 
     // キャラクターの情報を表示(テスト用)
     void displayInfo() {
@@ -75,4 +87,9 @@ private:
     int MP;   // 魔法ポイント
     int ATK;  // 攻撃力
     int DEF;  // 防御力
+    int SPD; //すばやさ
+    int LUK; //幸運値
 };
+
+STATUS* enemy[ENEMY_MAX_NUM];
+STATUS user(Title.InputName(), 20, 5, 5, 5, 5, 50);

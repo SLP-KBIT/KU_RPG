@@ -40,6 +40,7 @@ public:
 	}AniFla;
 
 	int m = 1;
+	bool outside = true;
 
 	int Origin_X = -5;
 	int Origin_Y = -5;
@@ -73,7 +74,12 @@ PLAYERDRAW::PLAYERDRAW()
 
 void PLAYERDRAW::RealScreenDraw()
 {
-	Move();
+	if (outside)
+	{
+		fade_in();
+		outside = false;
+	}
+	if (!Stage.viewItem) Move();
 	BackScreenDraw();
 }
 
@@ -247,7 +253,7 @@ void PLAYERDRAW::CheckCIE()
 	{
 		if (Origin_Y + FIXED_Y == 5 || Origin_Y + FIXED_Y == 6)
 		{
-			std::string msg = "男子大学生「キャーーーーー！！！」\n茜ちゃん「すんませんっ！！すんませんっ！！」";
+			std::string msg = "男子大学生たち「「「 キャーーーーー！！！ 」」」\n茜ちゃん「すんませんっ！！すんませんっ！！」";
 			showMsg(msg);
 		}
 		else if (Origin_Y + FIXED_Y == 8 || Origin_Y + FIXED_Y == 9)

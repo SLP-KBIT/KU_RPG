@@ -2,17 +2,18 @@
 class
 {
 public:
-	int MS[50 + 1];
-	int Meiryo[50 + 1];
+	int MS[100 + 1];
+	int Meiryo[100 + 1];
 
 	void Load()
 	{
-		for (int i = 0; i < 50 + 1; i++)
+		for (int i = 0; i < 100 + 1; i++)
 		{
 			MS[i] = CreateFontToHandle("‚l‚r ƒSƒVƒbƒN", i, 6, DX_FONTTYPE_NORMAL);
 			Meiryo[i] = CreateFontToHandle("ƒƒCƒŠƒI", i, 6, DX_FONTTYPE_NORMAL);
 		}
 	}
+
 private:
 }Font;
 
