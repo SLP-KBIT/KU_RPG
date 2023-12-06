@@ -1,0 +1,5 @@
+﻿  Main.cpp
+C:\DxLib3_24b\DxLib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\Users\21t317\OneDrive - KAGAWA UNIVERSITY\ドキュメント\Downloads\final_rpg_prototype\rpg_prototype\Battle.h(51,41): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\21t317\OneDrive - KAGAWA UNIVERSITY\ドキュメント\Downloads\final_rpg_prototype\rpg_prototype\Battle.h(206,33): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+  rpg_study.vcxproj -> C:\Users\21t317\OneDrive - KAGAWA UNIVERSITY\ドキュメント\Downloads\final_rpg_prototype\rpg_prototype\Debug\rpg_study.exe
