@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\DxLib3_24b\Dxlib.h(3344,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  KURPG.vcxproj -> C:\Users\21t317\OneDrive - KAGAWA UNIVERSITY\デスクトップ\MyFolder\SLP\活動記録2023\KURPG\x64\Debug\KURPG.exe

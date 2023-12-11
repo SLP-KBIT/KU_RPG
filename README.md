@@ -1,30 +1,27 @@
-# KU_RPG
-とある香川の大学を舞台としたRPGゲームのチーム開発_2023
-
-
-## ディレクトリ構成の概説
-開発において編集していくのは以下のファイル
+要件定義
+===
+# ディレクトリ構成（旧）
 ```md
 .
 └── rpg_prototype
     ├── Main.cpp           // 実行を制御するメインファイル
     ├── CourceFile         // マップ配置のテキストファイルを保存するフォルダ
-    │   └── WorldMap.txt
+    │   └── WorldMap.txt
     ├── Picture            // 使用する画像を保存するディレクトリ
-    │   ├── Backgrounds    // 背景画像を保存するフォルダ
-    │   │   └── pure_forest.png
-    │   ├── Enemys         // 敵画像を保存するフォルダ
-    │   │   ├── Slime.png
-    │   │   └── SlimeBeth.png
-    │   ├── Maps           // マップチップを保存するフォルダ
-    │   │   ├── Fill_grass.png
-    │   │   ├── MapChip.png
-    │   │   ├── grass_near_river.png
-    │   │   └── grass_near_river2.png
-    │   └── Players        // プレイヤーに関する画像を保存するフォルダ
-    │       ├── Player.png
-    │       ├── akane.png
-    │       └── akane2.png
+    │   ├── Backgrounds    // 背景画像を保存するフォルダ
+    │   │   └── pure_forest.png
+    │   ├── Enemys         // 敵画像を保存するフォルダ
+    │   │   ├── Slime.png
+    │   │   └── SlimeBeth.png
+    │   ├── Maps           // マップチップを保存するフォルダ
+    │   │   ├── Fill_grass.png
+    │   │   ├── MapChip.png
+    │   │   ├── grass_near_river.png
+    │   │   └── grass_near_river2.png
+    │   └── Players        // プレイヤーに関する画像を保存するフォルダ
+    │       ├── Player.png
+    │       ├── akane.png
+    │       └── akane2.png
     ├── Battle.h   // 戦闘におけるコマンド表示やダメージ
     ├── Enemy.h    // 敵の表示
     ├── Picture.h  // 用意した画像をプログラム上に読み込む
