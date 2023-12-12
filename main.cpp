@@ -1,20 +1,10 @@
-#include <Dxlib.h>
+#include "Dxlib.h"
+#include "MyLib.h"
+#include "SystemControl.h"
+
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
-    DxLib_Init();
-    ChangeWindowMode(true);
-    SetDrawScreen(DX_SCREEN_BACK);
-
-    while (!ProcessMessage())
-    {
-        ClearDrawScreen();
-
-        DrawBox(10, 10, 20, 20, GetColor(255, 255, 255), true);
-
-        ScreenFlip();
-    }
-
-    DxLib_End();
-
+    SystemControl* sc = new SystemControl;
+    delete sc;
     return 0;
 }
