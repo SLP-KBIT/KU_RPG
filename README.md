@@ -43,6 +43,8 @@
 # クラスの階層化（現段階）
 ```
 main.cpp
+├── DxLib.h
+├── MyLib.h
 └── SystemControl.h
     ├── TitleControl.h
     └── GameControl.h

@@ -30,7 +30,7 @@ void SystemControl::MainLoop()
 
 		ClearDrawScreen();
 
-		DrawBox(10, 10, 20, 20, GetColor(255, 255, 255), true);
+		DrawBox(10, 10, 20, 20, color->white, true);
 
 		ScreenFlip();
 	}
