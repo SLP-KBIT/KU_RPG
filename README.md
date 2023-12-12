@@ -45,8 +45,13 @@
 main.cpp
 └── SystemControl.h
     ├── TitleControl.h
-    ├── GameControl.h
-    └── BattleControl.h
+    └── GameControl.h
+        ├── Object.h
+        ├── Player.h
+        ├── Enemy.h
+        ├── Item.h
+        ├── MapControl.h
+        └── BattleControl.h
 ```
 # ディレクトリ構成（現段階）
 ```
