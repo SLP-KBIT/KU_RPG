@@ -1,2 +1,8 @@
-Log.txt
 git.sh
+.vs
+x64
+*.sln
+*.vcxproj
+*.filters
+*.user
+Log.txt

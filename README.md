@@ -44,16 +44,17 @@
 ```
 main.cpp
 ├── DxLib.h
-├── MyLib.h
-└── SystemControl.h
-    ├── TitleControl.h
-    └── GameControl.h
+├── Define.h
+└── SystemManager.h
+    ├── TitleManager.h
+    └── GameManager.h
         ├── Object.h
         ├── Player.h
         ├── Enemy.h
         ├── Item.h
-        ├── MapControl.h
-        └── BattleControl.h
+        ├── Graphics.h
+        ├── WorldManager.h
+        └── FightManager.h
 ```
 # ディレクトリ構成（現段階）
 ```

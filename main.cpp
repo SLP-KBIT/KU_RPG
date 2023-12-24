@@ -1,10 +1,10 @@
 #include "Dxlib.h"
-#include "MyLib.h"
-#include "SystemControl.h"
+#include "Define.h"
+#include "SystemManager.h"
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
-    SystemControl* sc = new SystemControl;
-    delete sc;
+    SystemManager* kurpg = new SystemManager;
+    delete kurpg;
     return 0;
 }
