@@ -34,3 +34,7 @@ Classic 1.1 **\<Latest\>**
 
 ### Character Designers
 - nagotta
+
+## Game Assets
+- [梓音屋 トークソフトちゃん達の歩行ドット絵](https://booth.pm/ja/items/4539371)
+<!--ドット絵、音楽、etcの引用元リンク-->
